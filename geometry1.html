@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>220KV TRANSMISSION GEOMETRY TYPE-1</h1>
+    </header>
+      <div class="container-fluid">
+          <div class="row">
+          <div class="col col-lg-4 pd">
+              <img src="geo1.PNG" class="img-fluid" alt="...">
+          </div>   
+          <div class="col col-lg-8">
+               <h2>Required Parameters...</h2>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Length</span>
+        <input type="text"  class="form-control" id="length" placeholder="accepting length in Km greater than 250km" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="3">
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Power</span>
+        <input type="text"  class="form-control" placeholder="accepting power in MW" id="power" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="3" >
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">pf <sub>r</sub> </span>
+        <input type="text" class="form-control" placeholder="accepting power factor of range 0.85 to 0.95 " id="powerFactor" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="4">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">f <sub>line</sub> </span>
+        <input type="text" class="form-control" placeholder="accepting line frequency of range 49.5 to 50.5 " id="freq" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="4">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">T <sub>current</sub> </span>
+        <input type="text" class="form-control" placeholder="accepting temperature in deg centigrade of range 20 to 55 deg  " id="temp" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="2">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">P <sub>current</sub> </span>
+        <input type="text" class="form-control" placeholder="accepting pressure in cm of mercury  of range 10 to 100 cmHg" id="per" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="3">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">m <sub>0</sub> </span>
+        <input type="text" class="form-control" placeholder="accepting value of irregularity factor of range 0.8 to 1" id="ifactor" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="4">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">T <sub>c-ension</sub> </span>
+        <input type="text" class="form-control" placeholder="accepting tension on conductor in thousand of Kg of range 1 to 5   " id="tsion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="1">
+      </div>
+
+      <div class="form-check" id="buttons">
+          <h4>Plz select conductor type...</h4>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="r1" value="c1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Drake
+        </label>
+<br>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="r2" value="c2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+            Partridge
+        </label>
+<br>
+        <input class="form-check-input" type="radio" name="flexRadioDefault"  id="r3" value="c3">
+        <label class="form-check-label" for="flexRadioDefault2">
+            Pbeasant
+        </label>
+
+      </div>
+      
+<br>
+      <button type="button" class="btn btn-outline-success" onclick="analysisParameters()">Submit</button>
+
+    </div> 
+          </div>
+<br><br>
+
+<div class="row extra">
+  <div class="col col-lg-12">
+    <table class="table">
+<h3>Calculated Parameters</h3>
+
+<tr>
+  <th scope="row" style="font-size: larger;">
+Parameters
+  </th>
+  <th scope="row" style="font-size: larger;">
+    Values
+  </th>
+</tr>
+
+<tr>
+  <td>Inductance (L)</td>
+  <td id="L"></td>
+</tr>
+<tr>
+  <td>Cpacitance (C)</td>
+  <td id="C"></td>
+</tr>
+
+<tr>
+  <td>Inductive Reactance (X<sub>L</sub>)</td>
+  <td id="Xl"></td>
+</tr>
+<tr>
+  <td>Capacitive Reactance (X<sub>C</sub>)</td>
+  <td id="Xc"></td>
+</tr>
+<tr>
+  <td>Sag(S)</td>
+  <td id="sag"></td>
+</tr>
+<tr>
+  <td>Height</td>
+  <td id="height"></td>
+</tr>
+<tr>
+  <td>Weight</td>
+  <td id="cweight"></td>
+</tr>
+<tr>
+  <td>Ground Clearance (G<sub>C</sub>)</td>
+  <td id="GC"></td>
+</tr>
+    </table>
+  </div>
+</div>
+<br><br>
+          <div class="row extra">
+              <div class="col col-lg-6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">Analysis Parameters</th>
+            </tr>
+        </thead>
+        <tbody>
+       <tr>
+           <th>Parameters</th>
+           <th> Values</th>
+       </tr>
+       <tr>
+           <th>Efficiency (%)</th>
+           <td id="e"></td>
+          
+       </tr>
+       <tr>
+        <th>Voltage Regulation(%)</th>
+       <td id="VR"></td>
+    </tr>
+    <tr>
+        <th>Corona Power Loss (KW/Km)</th>
+       <td id="Pc"></td>
+    </tr>
+    </tbody>
+    </table>
+              </div>
+              <div class="col col-lg-6">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th colspan="3">Recommandation</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                          <th>Excellent </th>
+                          <th>Good </th>
+                          <th>Poor</th>
+                      </tr>
+                      <tr>
+                        <th id="excellent(e)">--</th>
+                        <th id="good(e)" >--</th>
+                        <th id="poor(e)">--</th>
+                      </tr>
+                      <tr>
+                        <td id="excellent(vr)" >--</td>
+                        <td id="good(vr)">--</td>
+                        <td id="poor(vr)">--</td>
+                      </tr>
+                      <tr>
+                        <td id="excellent(pc)">--</td>
+                        <td id="good(pc)">--</td>
+                        <td id="poor(pc)">--</td>
+                      </tr>
+                    </tbody>
+                  </table>
+    
+              </div>
+          </div>
+      </div>
+    <script src="app.js"></script>
+</body>
+</html>

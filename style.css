@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+.color{
+    background-color: rgba(168, 199, 84, 0.767);
+}
+.dropdown-menu>li>a:hover
+{
+    background-color: rgba(168, 199, 84, 0.767);
+}
+h3
+{
+    text-align: center;
+    text-transform: capitalize;
+ text-decoration: underline;
+}
+p{
+ 
+    text-transform: capitalize;
+    text-align:center;
+    font-size: larger;
+}
+/* ------------------------------- */
+footer{
+    font-weight: bold;
+   text-transform: capitalize;
+    padding: 20px;
+    background-color:rgba(168, 199, 84, 0.767); 
+    height: 80px;
+ 
+}

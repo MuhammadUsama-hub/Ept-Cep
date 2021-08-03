@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Optimization Of 220KV TRANSMISSION GEOMETRY TYPE-2</h1>
+    </header>
+    <h3>Case 1:By Increasing Distance Between The Conductors</h3>
+   <br> <div class="container-fluid">
+        <div class="row">
+        <div class="col col-lg-4 pd">
+            <img src="geo2.PNG" class="img-fluid" alt="...">
+        </div>   
+        <div class="col col-lg-8">
+            <h2>Fixed Parameters...</h2>
+            <table id="optable">
+                <tr>
+                    <th>Length (L)</th>
+                    <th>260 Km</th>
+                </tr>
+                <tr>
+                    <th>Power (P)</th>
+                    <th> 150 MW</th>
+                </tr>
+                <tr>
+                    <th>PowerFactor (pf)</th>
+                    <th> 0.89 (lagging)</th>
+                </tr>
+                <tr>
+                    <th>Frequency (f)</th>
+                    <th>49.5 Hz</th>
+                </tr>
+                <tr>
+                    <th>Temperature (T)</th>
+                    <th>35 <sup>0</sup>C </th>
+                </tr>
+                <tr>
+                    <th>Pressure (Pr)</th>
+                    <th>74 cm of Hg</th>
+                </tr>
+                <tr>
+                    <th>Conductor Surface Irregularity(m<sub>0</sub>) </th>
+                    <th>1 (Polished Surface)</th>
+                </tr>
+            </table>
+             <h2>Required Parameters...</h2>
+             <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">D<sub></sub> </span>
+                <input type="text" class="form-control" placeholder="increased in range (2 to 4) meters" id="d" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="1">
+              </div>
+              <div class="form-check" id="buttons">
+                <h4>Plz select conductor type...</h4>
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="r1" value="c1" >
+              <label class="form-check-label" for="flexRadioDefault1">
+                Drake
+              </label>
+            <br>
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="r2" value="c2"  checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                  Partridge
+              </label>
+            <br>
+              <input class="form-check-input" type="radio" name="flexRadioDefault"  id="r3" value="c3">
+              <label class="form-check-label" for="flexRadioDefault2">
+                  Pbeasant
+              </label>
+            
+            </div>
+            
+<br>
+    <button type="button" class="btn btn-outline-success" onclick="optimize1()">Submit</button>
+
+  </div> 
+
+        </div>
+        <br> <br>
+        <!-- result -->
+        <div class="row extra">
+            <div class="col col-lg-6">
+        <table class="table">
+        <thead>
+          <tr>
+              <th colspan="2">Analysis Parameters</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+         <th>Parameters</th>
+         <th> Values</th>
+        </tr>
+        <tr>
+        <th>Corona Power Loss (KW/Km)</th>
+        <td id="Pc"></td>
+        </tr>
+        </tbody>
+        </table>
+            </div>
+            <div class="col col-lg-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="3">Recommandation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>Excellent </th>
+                        <th>Good </th>
+                        <th>Poor</th>
+                    </tr>
+                    <tr>
+                      <th id="excellent(pc)">light</th>
+                      <th id="good(pc)" >light</th>
+                      <th id="poor(pc)">light</th>
+                    </tr>
+                  </tbody>
+                </table>
+        
+            </div>
+        </div>
+        <!-- end -->
+        <br>
+<h3>Case 2:By Increasing Radius Of The Conductors</h3>
+<div class="row">
+    <div class="col col-lg-4 pd">
+        <img src="geo2.PNG" class="img-fluid" alt="...">
+    </div>   
+    <div class="col col-lg-8">
+        <h2>Fixed Parameters...</h2>
+        <table id="optable">
+            <tr>
+                <th >Length (L)</th>
+                <th>260 Km</th>
+            </tr>
+            <tr>
+                <th>Power (P)</th>
+                <th> 150 MW</th>
+            </tr>
+            <tr>
+                <th>PowerFactor (pf)</th>
+                <th> 0.89 (lagging)</th>
+            </tr>
+            <tr>
+                <th>Frequency (f)</th>
+                <th>49.5 Hz</th>
+            </tr>
+            <tr>
+                <th>Temperature (T)</th>
+                <th>35 <sup>0</sup>C </th>
+            </tr>
+            <tr>
+                <th>Pressure (Pr)</th>
+                <th>74 cm of Hg</th>
+            </tr>
+            <tr>
+                <th>Conductor Surface Irregularity(m<sub>0</sub>) </th>
+                <th>1 (Polished Surface)</th>
+            </tr>
+            <tr>
+                <th>Distance Between Bundeled Conductors(D <sub>aa'</sub> to D <sub>bb'</sub>) </th>
+                <th>9.14 m</th>
+            </tr>
+            <tr>
+                <th>Distance Between Bundeled Conductors(D <sub>bb'</sub> to D <sub>cc'</sub>) </th>
+                <th>9.14 m</th>
+            </tr>
+            <tr>
+                <th>Distance Between Bundeled Conductors(D <sub>cc'</sub> to D <sub>aa'</sub>) </th>
+                <th>18.28 m</th>
+            </tr>
+        </table>
+         <h2>Required Parameters...</h2>
+         <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">r </span>
+            <input type="text" class="form-control" placeholder="increased by range (2 to 4) times" id="r" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" maxlength="1">
+          </div>
+         
+
+<div class="form-check" id="buttons">
+    <h4>Plz select conductor type...</h4>
+  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="r-1" value="c-1">
+  <label class="form-check-label" for="flexRadioDefault1">
+    Drake
+  </label>
+<br>
+  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="r-2" value="c-2"  checked>
+  <label class="form-check-label" for="flexRadioDefault2">
+      Partridge
+  </label>
+<br>
+  <input class="form-check-input" type="radio" name="flexRadioDefault1"  id="r-3" value="c-3">
+  <label class="form-check-label" for="flexRadioDefault2">
+      Pbeasant
+  </label>
+
+</div>
+
+<br>
+<button type="button" class="btn btn-outline-success" onclick="optimize2()">Submit</button>
+
+</div> 
+
+</div>
+<br><br>
+<!-- result -->
+<div class="row extra">
+    <div class="col col-lg-6">
+<table class="table">
+<thead>
+  <tr>
+      <th colspan="2">Analysis Parameters</th>
+  </tr>
+</thead>
+<tbody>
+<tr>
+ <th>Parameters</th>
+ <th> Values</th>
+</tr>
+<tr>
+<th>Corona Power Loss (KW/Km)</th>
+<td id="Pc1"></td>
+</tr>
+</tbody>
+</table>
+    </div>
+    <div class="col col-lg-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="3">Recommandation</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>Excellent </th>
+                <th>Good </th>
+                <th>Poor</th>
+            </tr>
+            <tr>
+              <th id="excellent(pc1)">light</th>
+              <th id="good(pc1)" >light</th>
+              <th id="poor(pc1)">light</th>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+</div>
+<br>
+<h3>
+    Conclusion
+</h3>
+<ol>
+    <li>From the first method although the coronaPowerloss is reduced but the size of the cross arms increased which will increase the cost, as well as the land occupied by the tower</li><br>
+<li>From the socond method is reduce more than the first one ,here only we need to choose conductors of large diameter,so that the electric field intensity will decreases which will reduces the coronaloss.</li><br>
+<li>Hence,we prefer second optimization method.</li>
+</ol>
+</div>
+<script src="optimize.js"></script>
+    </body>
+</html>
